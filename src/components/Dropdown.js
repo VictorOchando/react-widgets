@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange, label }) => {
@@ -15,7 +14,9 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
 
         document.body.addEventListener("click", onBodyClick, { capture: true });
         return () => {
-            document.body.removeEventListener("click", onBodyClick);
+            document.body.removeEventListener("click", onBodyClick, {
+                capture: true,
+            });
         };
     }, []);
 
